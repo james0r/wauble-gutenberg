@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// This file contains global styles that don't belong anywhere else.
+// -----------------------------------------------------------------------------
+
+body {
+  background-color: var(--wauble-body-background-color);
+}
+
+html,
+body {
+  margin: 0;
+}
+
+[x-cloak] { display: none !important; }

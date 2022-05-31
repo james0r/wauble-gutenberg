@@ -1,0 +1,34 @@
+// -----------------------------------------------------------------------------
+// This file contains accessibility related styles.
+// -----------------------------------------------------------------------------
+
+.no-focus-outline a:focus,
+.no-focus-outline button:focus,
+.no-focus-outline div:focus {
+  outline: none;
+}
+
+.sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.skip-to-content-link {
+  background: var(--wauble-primary-color);
+  color: white; 
+  height: 50px;
+  top: 0;
+  left: -10000px;
+  padding: 0px 16px;
+  position: fixed;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.skip-to-content-link:focus {
+  left: 0;
+}
