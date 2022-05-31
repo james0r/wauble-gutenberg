@@ -1,13 +1,14 @@
-# Wauble Starter Theme
+# Wauble Gutenberg Starter Theme
 
-Wauble starter theme attempts to be helpful and minimal. Wauble uses Webpack as a bundler and supports SCSS, ES6, Alpine.JS, and BrowserSync out of the box.
+Wauble Gutenberg starter theme attempts to be helpful and minimal. Wauble uses Webpack as a bundler and supports SCSS, ES6, Alpine.JS, and BrowserSync out of the box.
 
 ## Installation
 
 ```bash
-git clone git@github.com:james0r/wauble.git
-cd wauble
+git clone https://github.com/james0r/wauble-gutenberg.git
+cd wauble-gutenberg
 npm i
+composer install
 ```
 
 ## Usage
@@ -16,7 +17,7 @@ npm i
 
 Modify the BrowserSync proxy address in `webpack/webpack.dev.js`
 
-```
+```javascript
   ...
   plugins: [
     new BrowserSyncPlugin({
@@ -32,6 +33,10 @@ Development:
 ```bash
 npm run start
 ```
+or
+```bash
+npm run dev
+```
 
 Production:
 ```bash
@@ -42,8 +47,7 @@ npm run build
 
 Our SCSS directory is located at `src/scss` and contains the following directory structure:
 
-```
-/src/scss/
+```bash
 ├── abstracts
 │   ├── _functions.scss
 │   ├── _mixins.scss
@@ -62,27 +66,27 @@ Our SCSS directory is located at `src/scss` and contains the following directory
 │   ├── _footer.scss
 │   └── _header.scss
 ├── main.scss
-├── templates
-│   ├── _index.scss
-│   ├── front-page.scss
-│   └── sample-page.scss
+├── modules
+│   ├── _abstracts.scss
+│   ├── page-template-example.scss
+│   └── template-front-page.scss
 └── themes
     └── _default.scss
 ```
 
-> To use SCSS variables, mixins, or functions within a dynamic styles file, you must import abstracts with `@import './abstracts';` at the top of your file.
+> To use SCSS variables, mixins, or functions within a modules files, you must import abstracts with `@import './abstracts';` at the top of your file.
 
 #### Development Mode
 
-In development mode, Webpack will inject your styles directly into the browser with hot-reloading. This includes any styles in the `/src/scss/dynamic` directory.
+In development mode, Webpack will inject your styles directly into the browser with hot-reloading. This includes any styles in the `/src/scss/modules` directory.
 
 #### Production Mode
 
-In production, global styles (all styles outside of `/src/scss/dynamic`) will be bundled and enqueue'd in the theme. Dynamically loaded styles (files created in `/src/scss/dynamic`) need to be enqueued based on your desired condition with the `functions.php` file. 
+In production, global styles (all styles outside of `/src/scss/dynamic`) will be bundled and enqueue'd in the theme. Dynamically loaded styles (files created in `/src/scss/modules`) need to be enqueued based on your desired condition with the `functions.php` file. 
 
 Here is an example of dynamically enqueue'ing the `front-page.css` styles:
 
-```
+```php
 if (is_front_page()) {
   wp_enqueue_style('front-page-styles', get_stylesheet_directory_uri() . '/dist/front-page.css');
 } 
@@ -94,7 +98,7 @@ It's encouraged that you load styles this way, although in some circumstances a 
 
 Within `src/alpine` you will find the following directories and example files:
 
-```
+```bash
 /src/alpine/
 ├── components
 │   └── dropdown.js
@@ -116,22 +120,7 @@ Check out `~/front-page.php` to see how these alpine features are used in a temp
 
 ### Enable Gutenberg Editor
 
-Remove the following from `functions.php`:
-```
-...
-add_filter('use_block_editor_for_post', '__return_false');
-...
-```
-and
-```
-...
-wp_dequeue_style('wp-block-library');
-wp_dequeue_style('wp-block-library-theme');
-wp_dequeue_style('wc-block-style');
-wp_dequeue_style( 'global-styles' );
-remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-...
-```
+There is a now a dedicated repo for [Wauble Gutenberg](https://github.com/james0r/wauble-gutenberg).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

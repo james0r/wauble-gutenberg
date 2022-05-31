@@ -2,7 +2,7 @@
 node_modules/
 
 # ignore composer vendor directory
-vendor/
+/vendor
 
 # ignore log files and databases and lock files.
 *.log
