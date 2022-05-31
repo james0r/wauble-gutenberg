@@ -82,7 +82,7 @@ In development mode, Webpack will inject your styles directly into the browser w
 
 #### Production Mode
 
-In production, global styles (all styles outside of `/src/scss/dynamic`) will be bundled and enqueue'd in the theme. Dynamically loaded styles (files created in `/src/scss/modules`) need to be enqueued based on your desired condition with the `functions.php` file. 
+In production, global styles (all styles outside of `/src/scss/modules`) will be bundled and enqueue'd in the theme. Dynamically loaded modules (files created in `/src/scss/modules`) need to be enqueued based on a condition within `functions.php`. 
 
 Here is an example of dynamically enqueue'ing the `front-page.css` styles:
 
