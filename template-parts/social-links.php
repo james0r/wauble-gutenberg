@@ -1,7 +1,7 @@
 <ul class="social-icons-list">
-  <?php if (!empty(carbon_get_theme_option('crb_facebook_url'))) : ?>
+  <?php if (!empty(get_field('facebook_link', 'options'))) : ?>
   <li class="social-icons-item">
-    <a href="<?php echo carbon_get_theme_option('crb_facebook_url'); ?>"
+    <a href="<?php echo get_field('facebook_link', 'options'); ?>"
       target="_blank" rel=”noopener”>
       <svg alt="Facebook icon" aria-label="Facebook icon" aria-role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"
         viewBox="0 0 16 16">
@@ -12,9 +12,9 @@
     </a>
   </li>
   <?php endif; ?>
-  <?php if (!empty(carbon_get_theme_option('crb_twitter_url'))) : ?>
+  <?php if (!empty(get_field('twitter_link', 'options'))) : ?>
   <li class="social-icons-item">
-    <a href="<?php echo carbon_get_theme_option('crb_twitter_url'); ?>"
+    <a href="<?php echo get_field('twitter_link', 'options'); ?>"
       target="_blank" rel=”noopener”>
       <svg alt="Twitter icon" aria-label="Twitter icon" aria-role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter"
         viewBox="0 0 16 16">
@@ -25,9 +25,9 @@
     </a>
   </li>
   <?php endif; ?>
-  <?php if (!empty(carbon_get_theme_option('crb_instagram_url'))) : ?>
+  <?php if (!empty(get_field('instagram_link', 'options'))) : ?>
   <li class="social-icons-item">
-    <a href="<?php echo carbon_get_theme_option('crb_instagram_url'); ?>"
+    <a href="<?php echo get_field('instagram_link', 'options'); ?>"
       target="_blank" rel=”noopener”>
       <svg alt="Instagram icon" aria-label="Instagram icon" aria-role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram"
         viewBox="0 0 16 16">
@@ -38,9 +38,9 @@
     </a>
   </li>
   <?php endif; ?>
-  <?php if (!empty(carbon_get_theme_option('crb_linkedin_url'))) : ?>
+  <?php if (!empty(get_field('linkedin_link', 'options'))) : ?>
   <li class="social-icons-item">
-    <a href="<?php echo carbon_get_theme_option('crb_linkedin_url'); ?>"
+    <a href="<?php echo get_field('linkedin_link', 'options'); ?>"
       target="_blank" rel=”noopener”>
       <svg alt="Linkedin icon" aria-label="Linkedin Icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
         viewBox="0 0 16 16">
@@ -51,9 +51,9 @@
     </a>
   </li>
   <?php endif; ?>
-  <?php if (!empty(carbon_get_theme_option('crb_pinterest_url'))) : ?>
+  <?php if (!empty(get_field('pinterest_link', 'options'))) : ?>
   <li class="social-icons-item">
-    <a href="<?php echo carbon_get_theme_option('crb_pinterest_url'); ?>"
+    <a href="<?php echo get_field('pinterest_link', 'options'); ?>"
       target="_blank" rel=”noopener”>
       <svg alt="Pinterest icon" aria-label="Pinterest icon" aria-role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pinterest"
         viewBox="0 0 16 16">
@@ -64,9 +64,9 @@
     </a>
   </li>
   <?php endif; ?>
-  <?php if (!empty(carbon_get_theme_option('crb_youtube_url'))) : ?>
+  <?php if (!empty(get_field('youtube_link', 'options'))) : ?>
   <li class="social-icons-item">
-    <a href="<?php echo carbon_get_theme_option('crb_youtube_url'); ?>"
+    <a href="<?php echo get_field('youtube_link', 'options'); ?>"
       target="_blank" rel=”noopener”>
       <svg alt="Youtube icon" aria-label="Youtube icon" aria-role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube"
         viewBox="0 0 16 16">

@@ -9,7 +9,7 @@
   </button>
   <div class="frontpage-template-inner" x-show="expanded" x-collapse.duration.1000ms.min.100px>
 
-    ACF Field Content: <?php the_field('acf_example_field') ?>  
+    <?php echo get_template_part('template-parts/social-links'); ?>  
 
     Featured Image: <br>
 

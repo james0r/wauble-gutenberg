@@ -4,6 +4,10 @@ define('WAUBLE_THEME_DIR', dirname(__FILE__) . '/');
 define('WAUBLE_THEME_ASSETS_DIR', get_stylesheet_directory_uri() . '/dist/');
 require_once WAUBLE_THEME_DIR . '/inc/helpers.php';
 
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();	
+}
+
 if (!function_exists('wauble_setup')) {
   function wauble_setup() {
     /*
@@ -212,11 +216,9 @@ add_action('after_setup_theme', 'wauble_setup');
  * @return void
  */
 function wauble_scripts() {
-
   // Enqueue the theme's stylesheet
   wp_enqueue_style('theme-styles', get_stylesheet_directory_uri() . '/style.css');
 
- 
   if (file_exists(dirname(__FILE__) . '/dist/css/frontend-bundle.css.map')) {
     wp_enqueue_style('frontend-styles', get_stylesheet_directory_uri() . '/dist/css/frontend-bundle.css');
     if (is_front_page()) {
@@ -378,19 +380,17 @@ function remove_dashboard_widgets() {
 
 add_action('acf/init', 'my_acf_init_block_types');
 function my_acf_init_block_types() {
-
     // Check function exists.
-    if( function_exists('acf_register_block_type') ) {
-
+  if (function_exists('acf_register_block_type')) {
         // register a testimonial block.
-        acf_register_block_type(array(
-            'name'              => 'ACF Example Block',
-            'title'             => __('ACF Hello World'),
-            'description'       => __('A Hello World Example Block.'),
-            'render_template'   => '/blocks/acf-hello-world/block.php',
-            'category'          => 'text',
-            'icon'              => 'admin-comments',
-            'keywords'          => array( 'hello world', 'acf' ),
-        ));
-    }
+    acf_register_block_type([
+      'name'              => 'ACF Example Block',
+      'title'             => __('ACF Hello World'),
+      'description'       => __('A Hello World Example Block.'),
+      'render_template'   => '/blocks/acf-hello-world/block.php',
+      'category'          => 'text',
+      'icon'              => 'admin-comments',
+      'keywords'          => ['hello world', 'acf'],
+    ]);
+  }
 }
