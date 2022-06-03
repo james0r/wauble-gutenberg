@@ -1,0 +1,7 @@
+.block_purple_box {
+  background: purple;
+}
+
+.block_purple_box__text {
+  color: white;
+}

@@ -13,18 +13,6 @@ if (!function_exists('dd')) {
   }
 }
 
-if (!function_exists('get_id_from_path')) {
-  function get_id_from_path($slug) {
-    $page = get_page_by_path($slug);
-  
-    if ($page) {
-      return $page->ID;
-    } else {
-      return null;
-    } 
-  }
-}
-
 function wauble_console_log($data) {
   echo '<script>';
   echo 'console.log(' . json_encode($data) . ')';

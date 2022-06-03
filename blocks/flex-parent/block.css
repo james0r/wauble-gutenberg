@@ -1,0 +1,8 @@
+.flex_parent__inner {
+  display: flex;
+}
+
+.flex_parent__inner > * {
+  flex: 1 1 50%;
+}
+

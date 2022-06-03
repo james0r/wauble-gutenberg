@@ -5,15 +5,6 @@ define('WAUBLE_THEME_ASSETS_DIR', get_stylesheet_directory_uri() . '/dist/');
 require_once WAUBLE_THEME_DIR . '/inc/helpers.php';
 
 if (!function_exists('wauble_setup')) {
-  /**
-   * Sets up theme defaults and registers support for various WordPress features.
-   *
-   * Note that this function is hooked into the after_setup_theme hook, which
-   * runs before the init hook. The init hook is too late for some features, such
-   * as indicating support for post thumbnails.
-   *
-   * @return void
-   */
   function wauble_setup() {
     /*
      * Make theme available for translation.
@@ -22,19 +13,6 @@ if (!function_exists('wauble_setup')) {
      * to change 'wauble' to the name of your theme in all the template files.
      */
     load_theme_textdomain('wauble', get_template_directory() . '/languages');
-
-    add_action('carbon_fields_register_fields', 'crb_register_custom_fields');
-    function crb_register_custom_fields() {
-      include_once dirname(__FILE__) . '/inc/crb-theme-options.php';
-      include_once dirname(__FILE__) . '/inc/crb-post-meta.php';
-    }
-
-    // Bootstrap Carbon Fields
-    require_once 'vendor/autoload.php';
-    \Carbon_Fields\Carbon_Fields::boot();
-
-    // Add default posts and comments RSS feed links to head.
-    add_theme_support('automatic-feed-links');
 
     /*
      * Let WordPress manage the document title.
@@ -115,9 +93,6 @@ if (!function_exists('wauble_setup')) {
     add_image_size('custom_logo', 400);
     add_image_size('custom_logo_2X', 800);
 
-    // Add theme support for selective refresh for widgets.
-    add_theme_support('customize-selective-refresh-widgets');
-
     // Add support for Block Styles.
     add_theme_support('wp-block-styles');
 
@@ -188,10 +163,6 @@ if (!function_exists('wauble_setup')) {
     // Add support for experimental cover block spacing.
     add_theme_support('custom-spacing');
 
-    // Add support for custom units.
-    // This was removed in WordPress 5.6 but is still required to properly support WP 5.5.
-    add_theme_support('custom-units');
-
     // Remove comments page in menu
     add_action('admin_menu', function () {
       remove_menu_page('edit-comments.php');
@@ -202,6 +173,9 @@ if (!function_exists('wauble_setup')) {
       if (is_admin_bar_showing()) {
         remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
       }
+
+      // Remove noisy SVGs in <body>
+      remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
 
       // Remove page attributies box for pages
       remove_post_type_support('page', 'page-attributes');
@@ -231,43 +205,6 @@ if (!function_exists('wauble_setup')) {
   }
 }
 add_action('after_setup_theme', 'wauble_setup');
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- *
- * @return void
- */
-function wauble_widgets_init() {
-  register_sidebar(
-    [
-      'name'          => esc_html__('Footer', 'wauble'),
-      'id'            => 'sidebar-1',
-      'description'   => esc_html__('Add widgets here to appear in your footer.', 'wauble'),
-      'before_widget' => '<section id="%1$s" class="widget %2$s">',
-      'after_widget'  => '</section>',
-      'before_title'  => '<h2 class="widget-title">',
-      'after_title'   => '</h2>',
-    ]
-  );
-}
-
-add_action('widgets_init', 'wauble_widgets_init');
-
-/**
-* Filter function used to remove the tinymce emoji plugin.
-*
-* @param array $plugins
-* @return array Difference betwen the two arrays
-*/
-function disable_emojis_tinymce($plugins) {
-  if (is_array($plugins)) {
-    return array_diff($plugins, ['wpemoji']);
-  } else {
-    return [];
-  }
-}
 
 /**
  * Enqueue scripts and styles.
@@ -382,7 +319,7 @@ function wauble_create_and_set_theme_pages() {
 
 add_action('after_switch_theme', 'wauble_create_and_set_theme_pages');
 
-function wauble_display_template_toast() {
+function wauble_console_table_info() {
   global $template;
 
   $markup = '<script>
@@ -395,10 +332,7 @@ function wauble_display_template_toast() {
   echo sprintf($markup, basename($template), get_bloginfo('version'));
 }
 
-add_action('wp_footer', 'wauble_display_template_toast');
-
-// Completely disable Gutenberg block editor
-add_filter('use_block_editor_for_post', '__return_false');
+add_action('wp_footer', 'wauble_console_table_info');
 
 function condensed_body_class($classes) {
   global $post;
@@ -436,33 +370,27 @@ function condensed_body_class($classes) {
 
 add_filter('body_class', 'condensed_body_class');
 
- /**
- * Hide editor on specific pages.
- */
- add_action('admin_init', 'hide_editor');
-
- function hide_editor() {
-   $slugs_to_hide = [
-     'frontpage'
-   ];
-
-   // Get the Post ID.
-   $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-   if (!isset($post_id)) {
-     return;
-   }
-
-   $slug = get_post_field('post_name', $post_id);
-
-   foreach ($slugs_to_hide as $slug_to_hide) {
-     if ($slug_to_hide == $slug) {
-       remove_post_type_support('page', 'editor');
-     }
-   }
- }
-
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 function remove_dashboard_widgets() {
   remove_meta_box('dashboard_primary', 'dashboard', 'side');
   remove_meta_box('dashboard_secondary', 'dashboard', 'side');
+}
+
+add_action('acf/init', 'my_acf_init_block_types');
+function my_acf_init_block_types() {
+
+    // Check function exists.
+    if( function_exists('acf_register_block_type') ) {
+
+        // register a testimonial block.
+        acf_register_block_type(array(
+            'name'              => 'ACF Example Block',
+            'title'             => __('ACF Example Block'),
+            'description'       => __('A custom example block.'),
+            'render_template'   => '/blocks/acf-example-block/block.php',
+            'category'          => 'text',
+            'icon'              => 'admin-comments',
+            'keywords'          => array( 'example', 'acf' ),
+        ));
+    }
 }

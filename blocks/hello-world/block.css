@@ -1,0 +1,9 @@
+.hello_world {
+  padding: 20px;
+  margin: auto;
+  background: black;
+  border: 3px solid magenta;
+  color: white;
+  max-width: 200px;
+  text-align: center;
+}

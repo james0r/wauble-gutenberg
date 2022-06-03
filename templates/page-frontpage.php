@@ -9,6 +9,8 @@
   </button>
   <div class="frontpage-template-inner" x-show="expanded" x-collapse.duration.1000ms.min.100px>
 
+    ACF Field Content: <?php the_field('acf_example_field') ?>  
+
     Featured Image: <br>
 
     <?php echo get_the_post_thumbnail(get_the_ID(), [400]); ?>

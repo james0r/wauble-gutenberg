@@ -39,7 +39,7 @@ module.exports = merge(common, {
     new BrowserSyncPlugin({
       host: "localhost",
       port: 3000,
-      proxy: "http://wauble.mamp/",
+      proxy: "http://wauble-gutenberg.mamp/",
       open: false,
       files: [
         {
