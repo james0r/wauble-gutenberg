@@ -3,11 +3,6 @@
   <div class="site-footer-inner">
     <hr>
     I'm the footer
-    <?php 
-      if (carbon_get_theme_option( 'crb_footer_copyright' )) {
-        echo carbon_get_theme_option( 'crb_footer_copyright' );
-      }
-    ?>
     <?php
     wp_nav_menu([
         'theme_location'    => 'footer_menu', // (string) Theme location to be used. Must be registered with register_nav_menu() in order to be selectable by the user.

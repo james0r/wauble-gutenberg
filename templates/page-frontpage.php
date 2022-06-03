@@ -52,7 +52,6 @@
       </div>
     </form>
 
-    <?php get_template_part('template-parts/social-links'); ?>
   </div>
 </div>
 

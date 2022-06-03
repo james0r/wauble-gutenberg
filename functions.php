@@ -385,12 +385,12 @@ function my_acf_init_block_types() {
         // register a testimonial block.
         acf_register_block_type(array(
             'name'              => 'ACF Example Block',
-            'title'             => __('ACF Example Block'),
-            'description'       => __('A custom example block.'),
-            'render_template'   => '/blocks/acf-example-block/block.php',
+            'title'             => __('ACF Hello World'),
+            'description'       => __('A Hello World Example Block.'),
+            'render_template'   => '/blocks/acf-hello-world/block.php',
             'category'          => 'text',
             'icon'              => 'admin-comments',
-            'keywords'          => array( 'example', 'acf' ),
+            'keywords'          => array( 'hello world', 'acf' ),
         ));
     }
 }
