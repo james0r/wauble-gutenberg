@@ -1,3 +1,4 @@
+<?php get_template_part('template-parts/header'); ?>
 
 <!-- Begin Loop -->
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -9,7 +10,7 @@
   </button>
   <div class="frontpage-template-inner" x-show="expanded" x-collapse.duration.1000ms.min.100px>
 
-    <?php echo get_template_part('template-parts/social-links'); ?>  
+    <?php echo get_template_part('template-parts/social-links'); ?>
 
     Featured Image: <br>
 
@@ -57,3 +58,5 @@
 
 <?php endwhile; endif; ?>
 <!-- End Loop -->
+
+<?php get_template_part('template-parts/footer');

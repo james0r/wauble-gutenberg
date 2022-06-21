@@ -4,6 +4,7 @@ define('WAUBLE_THEME_DIR', dirname(__FILE__) . '/');
 define('WAUBLE_THEME_ASSETS_DIR', get_stylesheet_directory_uri() . '/dist/');
 require_once WAUBLE_THEME_DIR . '/inc/helpers.php';
 require_once WAUBLE_THEME_DIR . '/inc/acf-field-groups.php';
+require_once WAUBLE_THEME_DIR . '/inc/acf-blocks-init.php';
 
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();	
@@ -376,21 +377,4 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 function remove_dashboard_widgets() {
   remove_meta_box('dashboard_primary', 'dashboard', 'side');
   remove_meta_box('dashboard_secondary', 'dashboard', 'side');
-}
-
-add_action('acf/init', 'my_acf_init_block_types');
-function my_acf_init_block_types() {
-    // Check function exists.
-  if (function_exists('acf_register_block_type')) {
-        // register a testimonial block.
-    acf_register_block_type([
-      'name'              => 'ACF Example Block',
-      'title'             => __('ACF Hello World'),
-      'description'       => __('A Hello World Example Block.'),
-      'render_template'   => '/blocks/acf-hello-world/block.php',
-      'category'          => 'text',
-      'icon'              => 'admin-comments',
-      'keywords'          => ['hello world', 'acf'],
-    ]);
-  }
 }
