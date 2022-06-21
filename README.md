@@ -117,10 +117,7 @@ To add a new Alpine component, store, directive, or magic property, create a new
 Check out `~/front-page.php` to see how these alpine features are used in a template.
 
 ## Configuration
-
-### Enable Gutenberg Editor
-
-There is a now a dedicated repo for [Wauble Gutenberg](https://github.com/james0r/wauble-gutenberg).
+Nothing to see here yet. Need something? Mention it in the discussions!
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
