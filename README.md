@@ -78,11 +78,11 @@ Our SCSS directory is located at `src/scss` and contains the following directory
 
 #### Development Mode
 
-In development mode, Webpack will inject your styles directly into the browser with hot-reloading. This includes any styles in the `/src/scss/modules` directory.
+In development mode, Webpack will inject your styles directly into the browser with hot-reloading. This includes any styles in the `/src/scss/dyanmic` directory.
 
 #### Production Mode
 
-In production, global styles (all styles outside of `/src/scss/modules`) will be bundled and enqueue'd in the theme. Dynamically loaded modules (files created in `/src/scss/modules`) need to be enqueued based on a condition within `functions.php`. 
+In production, global styles (all styles outside of `/src/scss/dynamic`) will be bundled and enqueue'd in the theme. Dynamically loaded styles (files created in `/src/scss/dynamic`) need to be enqueued based on a condition within `functions.php`. 
 
 Here is an example of dynamically enqueue'ing the `front-page.css` styles:
 
