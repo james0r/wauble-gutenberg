@@ -3,6 +3,7 @@
 define('WAUBLE_THEME_DIR', dirname(__FILE__) . '/');
 define('WAUBLE_THEME_ASSETS_DIR', get_stylesheet_directory_uri() . '/dist/');
 require_once WAUBLE_THEME_DIR . '/inc/helpers.php';
+require_once WAUBLE_THEME_DIR . '/inc/acf-field-groups.php';
 
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();	
@@ -248,7 +249,6 @@ add_action('wp_enqueue_scripts', 'wauble_scripts');
  */
 function wauble_admin_scripts() {
   wp_enqueue_style('admin-styles', get_template_directory_uri() . '/dist/admin/admin.css');
-  wp_enqueue_script('jquery-ui', get_template_directory_uri() . '/dist/admin/jquery-ui.min.js');
   wp_enqueue_script('admin-scripts', get_template_directory_uri() . '/dist/admin/admin.js');
 }
 

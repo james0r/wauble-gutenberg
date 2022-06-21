@@ -66,7 +66,7 @@ Our SCSS directory is located at `src/scss` and contains the following directory
 │   ├── _footer.scss
 │   └── _header.scss
 ├── main.scss
-├── modules
+├── dynamic
 │   ├── _abstracts.scss
 │   ├── page-template-example.scss
 │   └── template-front-page.scss
@@ -74,7 +74,7 @@ Our SCSS directory is located at `src/scss` and contains the following directory
     └── _default.scss
 ```
 
-> To use SCSS variables, mixins, or functions within a modules files, you must import abstracts with `@import './abstracts';` at the top of your file.
+> To use SCSS variables, mixins, or functions within dynamically imported stylesheets, you must import abstracts first by adding `@import './abstracts';` to the top of your dynamic SCSS file.
 
 #### Development Mode
 

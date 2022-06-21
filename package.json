@@ -3,12 +3,12 @@
   "description": "A simple Webpack-based Wordpress starter theme.",
   "version": "1.0.0",
   "scripts": {
-    "start": "NODE_ENV=development webpack --watch --config webpack/webpack.dev.js & npm run watch:scss-modules",
+    "start": "NODE_ENV=development webpack --watch --config webpack/webpack.dev.js & npm run watch:dynanic-css",
     "dev": "npm run start",
-    "watch:scss-modules": "sass --watch ./src/scss/modules:./dist/css --style=expanded",
-    "build": "NODE_ENV=production npm run build:bundles && npm run build:scss-modules",
+    "watch:dynanic-css": "sass --watch ./src/scss/dynamic:./dist/css --style=expanded",
+    "build": "NODE_ENV=production npm run build:bundles && npm run build:dynanic-css",
     "build:bundles": "webpack --config webpack/webpack.prod.js",
-    "build:scss-modules": "sass ./src/scss/modules:./dist/css --style=compressed"
+    "build:dynanic-css": "sass ./src/scss/dynamic:./dist/css --style=compressed"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
