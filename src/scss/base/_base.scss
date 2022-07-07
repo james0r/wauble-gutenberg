@@ -2,13 +2,25 @@
 // This file contains global styles that don't belong anywhere else.
 // -----------------------------------------------------------------------------
 
-body {
-  background-color: var(--wauble-body-background-color);
-}
 
 html,
 body {
   margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  background-color: var(--wauble-body-background-color);
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  box-sizing: border-box;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
 }
 
 [x-cloak] { display: none !important; }

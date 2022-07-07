@@ -1,11 +1,3 @@
-html {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--wauble-background-color);
-}
-
 /**
  * Make all elements from the DOM inherit from the parent box-sizing
  * Since `*` has a specificity of 0, it does not override the `html` value
@@ -42,12 +34,6 @@ dd {
   margin: 0;
 }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-}
 
 /* Remove list styles on ul, ol elements with a class attribute */
 ul[class],
@@ -60,25 +46,10 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to work with */
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* Natural flow and rhythm in articles by default */
-article > * + * {
-  margin-top: 1em;
-}
-
 /* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
 select {
   font: inherit;
-}
-
-.module {
-  width: 100%;
 }

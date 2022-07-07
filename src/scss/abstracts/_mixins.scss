@@ -1,6 +1,80 @@
 // -----------------------------------------------------------------------------
-// This file contains all application-wide Sass mixins.
+// This file contains all application-wide SASS mixins.
 // -----------------------------------------------------------------------------
+
+/// Desktop-first Breakpoints
+@mixin xs {
+  @media (max-width: #{$screen-xs}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (max-width: #{$screen-xxl}) {
+    @content;
+  }
+}
+
+// Mobile-first Breakpoints
+@mixin min-xs {
+  @media (max-width: #{$screen-xs}) {
+    @content;
+  }
+}
+
+@mixin min-sm {
+  @media (max-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin min-md {
+  @media (max-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+@mixin min-lg {
+  @media (max-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+@mixin min-xl {
+  @media (max-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+@mixin min-xxl {
+  @media (max-width: #{$screen-xxl}) {
+    @content;
+  }
+}
 
 /// Event wrapper
 /// @author Harry Roberts
@@ -8,13 +82,17 @@
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
   @if $self {
+
     &,
     &:hover,
     &:active,
     &:focus {
       @content;
     }
-  } @else {
+  }
+
+  @else {
+
     &:hover,
     &:active,
     &:focus {
@@ -31,41 +109,3 @@
     @content;
   }
 }
-
-/// Easy Breakpoints
-
-@mixin xs {
-    @media (max-width: #{$screen-xs-max}) {
-        @content;
-    }
- }
-
-@mixin sm {
-    @media (max-width: #{$screen-sm-max}) {
-        @content; 
-    }
- }
- 
- @mixin md {
-    @media (max-width: #{$screen-md-max}) {
-        @content;
-    }
- }
- 
- @mixin lg {
-    @media (max-width: #{$screen-lg-max}) {
-        @content;
-    }
- }
- 
- @mixin xl {
-    @media (max-width: #{$screen-xl-max}) {
-        @content;
-    }
- }
-
- @mixin xxl {
-    @media (max-width: #{$screen-xxl-max}) {
-        @content;
-    }
- }

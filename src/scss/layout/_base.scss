@@ -2,3 +2,9 @@
 // Layout Related Styles
 // Ex. .container, .grid, .col
 // -----------------------------------------------------------------------------
+
+.container {
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+}

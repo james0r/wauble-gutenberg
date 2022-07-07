@@ -1,6 +1,6 @@
-/**
- * Styles related to text / copy.
- */
+// -----------------------------------------------------------------------------
+// This file contains application-wide typography styles.
+// -----------------------------------------------------------------------------
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -11,4 +11,9 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
 }

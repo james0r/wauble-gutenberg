@@ -3,17 +3,15 @@
 // 1. Configuration and helpers
 @import "abstracts/variables", "abstracts/functions", "abstracts/mixins";
 
-// 2. Vendors
-
-// 3. Base stuff
+// 2. Base stuff
 @import "base/a11y", "base/base", "base/fonts", "base/typography", "base/helpers";
 
-// 4. Layout-related sections
+// 3. Layout-related sections
 @import "layout/base", "layout/header", "layout/footer";
 
-// 5. Components
+// 4. Components
 @import "components/button";
 
-// 7. Themes
+// 5. Themes
 @import "themes/default"; 
 
